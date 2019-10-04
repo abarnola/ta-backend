@@ -1,7 +1,14 @@
 const router = require('express').Router()
 const User = require('../models/User')
+const { validateSignup, validateLogin } = require('../util/validation')
 
 router.post('/signup', (req, res) => {
+  //Validate data using Joi
+  const { error } = validateSignup(req.body)
+
+  //Return the error, if any
+  if (error) return res.status(400).send(error.details[0].message)
+
   const user = new User({
     userName: req.body.userName,
     email: req.body.email,

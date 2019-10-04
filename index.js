@@ -6,11 +6,12 @@ const mongoose = require('mongoose')
 dotenv.config()
 
 // Connect to DB
-mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () =>
-  console.log('Connected to DB')
+mongoose.connect(
+  process.env.DB_CONNECT,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => console.log('Connected to DB')
 )
 
-console.log(process.env.DB_CONNECT)
 // Middleware
 app.use(express.json())
 
