@@ -4,7 +4,7 @@
 **All routes are assumed to be prefixed with /api**
 
 # Routes
-## login [POST]
+## /login [POST]
 
 Attempts to log in a user providing email and password credentials
 
@@ -53,3 +53,7 @@ __Response Format__
     * **password**: password must be between 8-32 characters in length
     * **confirmPassword**: confirmPassword must match password field
     * **userName**: userName field must be between 8-32 characters in length, and must not be taken
+
+## /trips/create [POST]
+Create a new trip, adding initial data such as 
+
