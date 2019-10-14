@@ -16,8 +16,9 @@ app.use(express.json())
 
 // Route imports
 const authRoute = require('./routes/auth')
-
+const tripsRoute = require('./routes/trips')
 // Route Middlewares
 app.use('/api/user', authRoute)
+app.use('/api/trips', tripsRoute)
 
 app.listen(5000, () => console.log('Server running on port 5000'))
