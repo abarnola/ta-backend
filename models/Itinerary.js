@@ -1,11 +1,14 @@
 const mongoose = require('mongoose')
 
-const itinerarySchema = new mongoose.Schema({
-  tripId: {
+const transportationSchema = new mongoose.Schema({
+  type: {
     type: String,
     required: true
   },
-  items: [itineraryItemSchema]
+  departure: String,
+  arrival: String,
+  departureLocation: String,
+  arrivalLocation: String
 })
 
 const itineraryItemSchema = new mongoose.Schema({
@@ -28,15 +31,7 @@ const itineraryItemSchema = new mongoose.Schema({
   transportation: [transportationSchema]
 })
 
-const transportationSchema = new mongoose.Schema({
-  type: {
-    type: String,
-    required: true
-  },
-  departure: String,
-  arrival: String,
-  departureLocation: String,
-  arrivalLocation: String
-})
-
-module.exports = mongoose.Model('Itinerary', itinerarySchema)
+module.exports = {
+  ItineraryItem: mongoose.model('ItineraryItem', itineraryItemSchema),
+  Transportation: mongoose.model('Transportation', transportationSchema)
+}
